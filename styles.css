@@ -1069,3 +1069,10 @@ pre {
         transition-duration: 0.01ms !important;
     }
 }
+.hero-description {
+    max-width: 650px;
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.72);
+}
