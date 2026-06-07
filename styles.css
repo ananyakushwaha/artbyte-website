@@ -1059,6 +1059,125 @@ pre {
     }
 }
 
+@media (pointer: coarse), (hover: none) {
+  body {
+    cursor: auto;
+    padding-bottom: 74px;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+
+  .site-header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 14px 16px;
+    transform: none;
+  }
+
+  .brand {
+    width: 132px;
+    height: 48px;
+  }
+
+  .brand-logo {
+    width: 132px;
+    height: 132px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 76px;
+    left: 16px;
+    right: 16px;
+    display: grid;
+    gap: 2px;
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  body.nav-open .site-nav {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .theme-button-top {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    top: auto;
+    z-index: 60;
+    min-width: 124px;
+    min-height: 44px;
+    font-size: 0.7rem;
+    background: rgba(10, 10, 10, 0.76);
+    box-shadow: 0 0 34px color-mix(in srgb, var(--cyan) 24%, transparent);
+  }
+
+  .theme-button-bottom {
+    display: none;
+  }
+
+  .hero,
+  .showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 24px;
+    padding-top: 94px;
+    padding-bottom: 56px;
+  }
+
+  .hero-copy {
+    max-width: 620px;
+  }
+
+  .hero-visual {
+    width: min(100%, 300px);
+    min-height: 240px;
+    justify-self: center;
+  }
+
+  .metrics,
+  .service-grid,
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .contact,
+  .site-footer {
+    align-items: flex-start;
+  }
+
+  .contact,
+  .footer-bottom {
+    flex-direction: column;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1068,11 +1187,4 @@ pre {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-.hero-description {
-    max-width: 650px;
-    margin-top: 20px;
-    font-size: 1rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.72);
 }
