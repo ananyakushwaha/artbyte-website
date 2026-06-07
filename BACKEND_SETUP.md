@@ -37,3 +37,29 @@ Open:
 `http://localhost:3000`
 
 The contact form submits to `/api/contact`, and the newsletter form submits to `/api/newsletter`.
+
+Do not test the forms with VS Code Live Server URLs such as:
+
+`http://127.0.0.1:5501/index.html`
+
+Live Server only serves static files, so `/api/contact` and `/api/newsletter` will not exist there.
+
+## Vercel deployment
+
+This project also includes Vercel serverless functions in:
+
+- `api/contact.js`
+- `api/newsletter.js`
+
+In Vercel, add these Environment Variables:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=artbyteinnovations@gmail.com
+SMTP_PASS=your_gmail_app_password_here
+MAIL_TO=artbyteinnovations@gmail.com
+```
+
+After setting the variables, redeploy the site. The forms will work on your Vercel domain, but they will not work from a static Live Server preview.
