@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=15" />
+    <link rel="stylesheet" href="styles.css?v=16" />
 </head>
 
 <body>
@@ -189,11 +189,45 @@
         </section>
 
         <section id="contact" class="contact section-shell">
-            <div>
+            <div class="contact-copy">
                 <p class="eyebrow">Let's build</p>
                 <h2>Bring us the idea. We will bring the system.</h2>
+                <p>Tell us what you want to build, improve, or market. Your message will be sent directly to Artbyte Innovations.</p>
             </div>
-            <a class="button primary magnetic" href="mailto:artbyteinnovations@gmail.com">artbyteinnovations@gmail.com</a>
+            <form class="contact-form" data-form="contact">
+                <div class="form-row">
+                    <label>
+                        <span>Name</span>
+                        <input name="name" type="text" autocomplete="name" required />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input name="email" type="email" autocomplete="email" required />
+                    </label>
+                </div>
+                <label>
+                    <span>Company</span>
+                    <input name="company" type="text" autocomplete="organization" />
+                </label>
+                <label>
+                    <span>What do you need?</span>
+                    <select name="service" required>
+                        <option value="">Choose a service</option>
+                        <option>Software Development</option>
+                        <option>Website Design</option>
+                        <option>UI/UX Systems</option>
+                        <option>Social Media Handling</option>
+                        <option>Digital Marketing</option>
+                        <option>End-to-End Delivery</option>
+                    </select>
+                </label>
+                <label>
+                    <span>Message</span>
+                    <textarea name="message" rows="5" required></textarea>
+                </label>
+                <button class="button primary magnetic" type="submit">Send Message</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
+            </form>
         </section>
     </main>
 
@@ -214,13 +248,21 @@
             <a class="magnetic" href="https://www.instagram.com/artbyte.in/" target="_blank" rel="noreferrer">Instagram</a>
             <a class="magnetic" href="mailto:artbyteinnovations@gmail.com">Mail</a>
         </div>
+        <form class="newsletter-form" data-form="newsletter">
+            <label>
+                <span>Newsletter</span>
+                <input name="email" type="email" autocomplete="email" placeholder="Email address" required />
+            </label>
+            <button class="theme-button magnetic" type="submit">Sign Up</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
         <div class="footer-bottom">
             <span>© 2026 Artbyte Innovations</span>
             <span>Idea to interface. Interface to impact.</span>
         </div>
     </footer>
 
-    <script src="script.js?v=14"></script>
+    <script src="script.js?v=16"></script>
 </body>
 
 </html>
