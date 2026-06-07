@@ -340,6 +340,9 @@ async function submitWebsiteForm(form) {
 
     const result = await response.json().catch(() => ({}));
     if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Backend is not running. Open the site through the Node/Vercel server, not Live Server.");
+      }
       throw new Error(result.message || "Something went wrong. Please try again.");
     }
 
