@@ -315,6 +315,50 @@ navLinks.forEach((link) => {
   });
 });
 
+function setFormStatus(form, message, type = "") {
+  const status = form.querySelector(".form-status");
+  if (!status) return;
+  status.textContent = message;
+  status.className = `form-status ${type}`.trim();
+}
+
+async function submitWebsiteForm(form) {
+  const formType = form.dataset.form;
+  const endpoint = formType === "newsletter" ? "/api/newsletter" : "/api/contact";
+  const submitButton = form.querySelector("button[type='submit']");
+  const payload = Object.fromEntries(new FormData(form).entries());
+
+  setFormStatus(form, "Sending...");
+  if (submitButton) submitButton.disabled = true;
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(result.message || "Something went wrong. Please try again.");
+    }
+
+    form.reset();
+    setFormStatus(form, result.message || "Submitted successfully.", "success");
+  } catch (error) {
+    setFormStatus(form, error.message || "Unable to send right now. Please email us directly.", "error");
+  } finally {
+    if (submitButton) submitButton.disabled = false;
+  }
+}
+
+document.querySelectorAll("[data-form]").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitWebsiteForm(form);
+  });
+});
+
 const savedThemeIndex = readThemeIndex();
 if (Number.isInteger(savedThemeIndex) && savedThemeIndex >= 0 && savedThemeIndex < themes.length) {
   activeThemeIndex = savedThemeIndex;
